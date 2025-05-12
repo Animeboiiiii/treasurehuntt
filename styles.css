@@ -1,81 +1,76 @@
-/* Basic reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+const slides = [
+  {
+    text: "Just seven days till your special day,\nGuess what’s coming — hooray hooray!\nAn adventure awaits, a golden quest,\nSolve each riddle to find the rest!",
+    options: []
+  },
+  {
+    text: "Out of love and admiration true,\nA word I say that’s just for you.\nIt’s formal, sweet, with vintage charm,\nA title that brings warmth, not harm.",
+    options: ["Queen", "Madam"],
+    answer: "Madam"
+  },
+  {
+    text: "Big screen tales and plots so grand,\nShe journeys far in dreamlike land.\nBe it thrill or laugh or tear,\nThis brings her heart so near.",
+    options: ["Books", "Movies"],
+    answer: "Movies"
+  },
+  {
+    text: "While others sleep and call it night,\nShe finds her joy in starlit light.\nThe moon’s her friend, the dark her stage,\nShe lives her truth past bedtime's cage.",
+    options: ["Sleep early", "Stay up late"],
+    answer: "Stay up late"
+  },
+  {
+    text: "When all the world feels big and wide,\nThere’s one who’s always by her side.\nNot just a name, but heart and soul,\nThe one who makes her spirit whole.",
+    options: ["Your Name", "Fake Name"],
+    answer: "Your Name"
+  },
+  {
+    text:
+      "Through riddles solved and paths so bright,\nYou journeyed true with heart and might.\nA pirate’s tale, but love the prize,\nGold can’t match the spark in your eyes.\n\n" +
+      "This hunt may end, but know this dear,\nYour laugh, your love — I hold so near.\nYour day is close, let joy unfurl,\nTo me, you are the whole wide world.",
+    options: []
+  }
+];
+
+let currentSlide = 0;
+
+const riddleText = document.getElementById("riddle-text");
+const optionsContainer = document.getElementById("options-container");
+const nextButton = document.getElementById("next-button");
+
+function showSlide() {
+  const slide = slides[currentSlide];
+  riddleText.innerText = slide.text;
+  optionsContainer.innerHTML = "";
+  nextButton.style.display = "none";  // Hide next button initially
+
+  if (slide.options.length > 0) {
+    slide.options.forEach(option => {
+      const button = document.createElement("button");
+      button.innerText = option;
+      button.onclick = () => {
+        if (option === slide.answer) {
+          button.style.backgroundColor = "#90ee90"; // green
+        } else {
+          button.style.backgroundColor = "#f08080"; // red
+        }
+        nextButton.style.display = "block"; // Show next button after an answer
+      };
+      optionsContainer.appendChild(button);
+    });
+  } else {
+    nextButton.style.display = "block";  // Directly show next button if no options
+  }
 }
 
-/* Style the body */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    padding: 20px;
+function nextSlide() {
+  currentSlide++;
+  if (currentSlide < slides.length) {
+    showSlide();
+  }
 }
 
-/* Center the content */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+window.onload = showSlide;
 
-/* Title */
-h1 {
-    text-align: center;
-    color: #2d2d2d;
-}
 
-/* Entry form */
-.entry-form {
-    margin-bottom: 20px;
-}
-
-textarea {
-    width: 100%;
-    height: 150px;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    resize: none;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-/* Entries section */
-.entries {
-    margin-top: 20px;
-}
-
-h2 {
-    margin-bottom: 10px;
-}
-
-ul {
-    list-style-type: none;
-}
-
-li {
-    background-color: #f9f9f9;
-    border-left: 5px solid #4CAF50;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-}
+   
+   
