@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Journal</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Treasure Hunt</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Treasure hunt clues</h1>
-        <div class="entry-form">
-            <textarea id="journal-entry" placeholder="Just seven days till your special day, guess what's coming,hooray hooray?"></textarea>
-            <button onclick="addEntry()">Add Entry</button>
-        </div>
-        <div class="entries">
-            <h2>Your Entries:</h2>
-            <ul id="entry-list">
-                <!-- Journal entries will appear here -->
-            </ul>
-        </div>
+  <div id="game-container">
+    <div id="riddle-container">
+      <p id="riddle-text"></p>
+      <div id="options-container"></div>
+      <button id="next-button" onclick="nextSlide()">Next</button>
     </div>
-    
-    <script src="script.js"></script>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
+
+
+    
+    
